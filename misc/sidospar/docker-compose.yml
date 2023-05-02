@@ -1,0 +1,7 @@
+# Skall köras som oprivilegierad användare
+version: '2.4'
+services:
+  rusty-misc:
+    build: .
+    ports:
+      - 2323:2323
