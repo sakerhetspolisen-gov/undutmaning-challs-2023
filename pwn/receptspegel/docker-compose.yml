@@ -1,0 +1,8 @@
+version: '2.4'
+services:
+  receptspegeln:
+    build: .
+    ports:
+      - '31002:31002'
+    privileged: true
+    restart: always

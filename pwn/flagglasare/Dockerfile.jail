@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS compile
+COPY . /work
+WORKDIR /work
+RUN build -c Release
+
+FROM docker.io/debian:bullseye-slim AS app
+# https://github.com/redpwn/jail
+FROM localhost/challs/redjail:latest
+COPY --from=app / /srv
+COPY --from=compile /work/bin/Release/net6.0/linux-x64/flagglasare /srv/app/run
+COPY --from=compile /work/flag.txt /srv/app/flag.txt
+COPY --from=compile /work/flag.txt /srv/flag.txt
+RUN chmod -R 555 /srv/app/
+ENV JAIL_MEM=20M JAIL_TIME=600 JAIL_CONNS_PER_IP=10

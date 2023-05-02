@@ -1,0 +1,7 @@
+version: '2.4'
+services:
+  hungrig:
+    build: .
+    ports:
+      - 31332:31332
+    privileged: true

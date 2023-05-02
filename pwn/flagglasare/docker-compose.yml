@@ -1,0 +1,7 @@
+# Skall köras som oprivilegierad användare
+version: '2.4'
+services:
+  flagglasare:
+    build: .
+    ports:
+      - 32337:1337
