@@ -1,0 +1,8 @@
+# Skall köras som oprivilegierad användare
+version: '2.4'
+services:
+  punchstats:
+    build: .
+    ports:
+      - 10307:5000
+

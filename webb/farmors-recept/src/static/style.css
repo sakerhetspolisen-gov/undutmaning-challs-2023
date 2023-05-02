@@ -1,0 +1,52 @@
+.background {
+    overflow: hidden;
+    background: linear-gradient(#260D20, rgb(112,72,72,0.7)), url("/static/hero.jpg"); 
+    background: linear-gradient(#260D20,rgb(112,72,72,0.7)), url("/static/hero.jpg"); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    z-index: -10;
+}
+
+.bg {
+    background: #260D20
+}
+
+.text-body {
+    color: #E2C6A0;
+}
+
+h1,h2,h3,h4,h5,p {
+    color: #E2C6A0;
+}
+
+.dark-text {
+    color: #A63F78;
+}
+.center {
+    margin: 0 auto;
+    width: 30%;
+    min-width: 400px; 
+}
+
+li,ul #dish-list {
+    background: black;
+}
+
+.dish-item {
+    cursor:pointer;
+}
+
+.dish-item:hover {
+    color: gray;
+}
+
+.list-group-item {
+    background-color: rgba(0,0,0,.4);
+    color: #E2C6A0;
+}
+
+.details {
+    color: white;
+}

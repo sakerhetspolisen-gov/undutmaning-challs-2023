@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block head %}
+
+    {{ super() }}
+    <style type="text/css">
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="epsilon">
+        <h1 class = "header-important">&lambda;-zone</h1>
+        <p class="important"> We're at the forefront of lactobased products, thanks to our R&D hub (&lambda;-zone) within distributed lactose manufacturing and technologies</p>
+        <div class="web-image">
+            <img class = "fact-image" src="{{ url_for('static', filename='images/Unknown-13.jpg') }}" alt="Italian Milk machine" width="90%">
+        
+        </div>
+
+        <h1 class = "header-important">{{ jsondata.Permission }}</h1>
+
+        <p class="important">
+            {{ jsondata.text }}
+        </p>
+        <p class="important">
+            {{ jsondata.info }}
+        </p>
+
+        <div class = "upload">
+            <label for="images" class="drop-container">
+                <span class="drop-title">Drop valid ID image here</span>
+                <form action = "{{url_for('lab')}}" method = "POST" 
+                enctype = "multipart/form-data">
+                    <input name = "image" type="file" accept="image/*" required>
+                    <input type=submit value=Upload>
+                </form>
+        </div>
+        <div data-response='{{ jsondata|tojson }}'></div>
+
+    </div>
+
+        
+
+    </div>
+
+{% endblock %}
+
+<input class = "filebutt" type="file" name="image">
