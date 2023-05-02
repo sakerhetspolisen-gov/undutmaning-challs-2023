@@ -1,0 +1,9 @@
+SocksPort 0
+
+HiddenServiceDir /tor/svcs/alpha
+HiddenServicePort 80 webserver:80
+HiddenServicePort 443 webserver:443
+
+HiddenServiceDir /tor/svcs/bravo
+HiddenServicePort 80 webserver:8080
+

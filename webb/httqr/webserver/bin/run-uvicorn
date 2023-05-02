@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SERVICE="$1"
+
+PARAMS=
+while read line
+do
+    PARAMS="${PARAMS}${line} "
+done < /etc/uvicorn/uvicorn-${SERVICE}.conf
+
+exec /usr/local/bin/uvicorn ${PARAMS}
+

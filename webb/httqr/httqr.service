@@ -1,0 +1,15 @@
+[Unit]
+Description=A challenge available through a TOR onion-address
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/httqr/
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

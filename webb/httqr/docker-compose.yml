@@ -1,0 +1,58 @@
+version: '3.6'
+services:
+
+  # ------ TOR frontend
+  tor:
+    container_name: tor
+    build:
+      context: tor/
+      dockerfile: Dockerfile
+      network: host
+    image: tor/alpine
+    restart: always
+    depends_on:
+        - webserver
+    #    volumes:
+    #        - type: bind
+    #          source: /tmp/ctf/tor/conf
+    #          target: /etc/tor
+    #        - type: bind
+    #          source: /tmp/ctf/tor/svc
+    #          target: /tor/svcs/someservice
+    networks:
+      frontend:
+        ipv4_address: 172.23.3.2
+      backend:
+        ipv4_address: 172.23.4.2
+
+  # ------ Nginx Web Server
+  webserver:
+    container_name: webserver
+    build:
+      context: webserver
+      dockerfile: Dockerfile
+      network: host
+    image: webserver/tor
+    restart: always
+    #    volumes:
+    #        - type: bind
+    #          source: /tmp/ctf/nginx/ssl
+    #          target: /etc/nginx/ssl
+    networks:
+      backend:
+        ipv4_address: 172.23.4.3
+
+networks:
+  frontend:
+    driver: bridge
+    internal: False
+    ipam:
+      config:
+        - subnet: 172.23.3.0/28
+  backend:
+    driver: bridge
+    internal: True
+    ipam:
+      config:
+        - subnet: 172.23.4.0/28
+
